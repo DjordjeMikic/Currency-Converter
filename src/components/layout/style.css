@@ -3,7 +3,28 @@
   width: 100%;
   position: relative;
 }
+
 .night {
-  background-color: rgb(0,0,0);
+  background-color: rgb(1,1,1);
   color: #fafafa;
+}
+
+.night .main-container {
+  border: 2px solid #3495eb;
+  border-left: none;
+  border-right: none;
+}
+
+.night .nav {
+  background-color: rgb(1,1,1);
+}
+
+.night .nav::after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  background-color: #3495eb;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }

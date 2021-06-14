@@ -1,16 +1,15 @@
-import React from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import { MainContext } from '../../context';
 import { Input, Select } from '../common';
-import CurrencyFormat from '../../helpers/currencyFormat';
 import "./style.css";
 
 const Main = () => {
-  let [selectedCurrency, setSelectedCurrency] = React.useState("EUR");
-  let [amount, setAmount] = React.useState('1');
-  let [convertTo, setConvertTo] = React.useState("RSD");
-  let [final, setFinal] = React.useState(0);
-  let [err, setErr] = React.useState(null);
-  let [info, base] = React.useContext(MainContext);
+  let [selectedCurrency, setSelectedCurrency] = useState("EUR");
+  let [amount, setAmount] = useState('1');
+  let [convertTo, setConvertTo] = useState("RSD");
+  let [final, setFinal] = useState(0);
+  let [err, setErr] = useState(null);
+  let [info] = useContext(MainContext);
 
   const changeCurrency = (a) => {
     setSelectedCurrency(a.target.value);
@@ -32,43 +31,61 @@ const Main = () => {
       setAmount(parseFloat(a.target.value));
     }
   }
-  const converted = React.useCallback(() => {
+
+  const converted = useCallback(() => {
     if(!info || !Object.keys(info).length) return;
     let sum = (1 / info[selectedCurrency]) / (1 / info[convertTo]);
     setFinal(sum * amount);
-    // console.log(sum);
   }, [selectedCurrency, convertTo, amount, info]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     converted();
   }, [converted, info]);
 
+  const changeValues = () => {
+    let middle = selectedCurrency;
+    setSelectedCurrency(convertTo);
+    setConvertTo(middle);
+  }
+
   return (
     <div className="flex main-container">
+
       <div className="flex column main">
-        <div className="flex from">
+        <div className="flex from from__column">
           <Select
             state={info && Object.keys(info)}
-            base="EUR"
+            base={selectedCurrency}
             onChange={changeCurrency}
           />
-          <Input id="from" info="From:" e={err} onChange={onChange} value={amount} />
+          <Input
+            id="from"
+            info="From:"
+            e={err}
+            onChange={onChange}
+            value={amount}
+          />
         </div>
+
         <div className="flex from">
           <Select
             state={info && Object.keys(info)}
-            base="RSD"
+            base={convertTo}
             onChange={convertCurrency}
           />
           {info && Object.keys(info).length && (
             <div className="flex" style={{ alignItems: 'flex-end' }}>
-              <h1>{final.toFixed(2)}</h1>
+              <h1 title={final}>{final.toFixed(2)}</h1>
               <p>{convertTo}</p>
             </div>
           )}
         </div>
+
       </div>
-      <button className="btn">Change</button>
+      <button className="btn" onClick={changeValues}>
+        <p>&larr;</p>
+        <p>&rarr;</p>
+      </button>
     </div>
   )
 }

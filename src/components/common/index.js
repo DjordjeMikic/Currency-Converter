@@ -1,4 +1,3 @@
-import React from 'react';
 import "./style.css";
 
 export const Input = ({ id, e, info, ...rest }) => {
@@ -10,7 +9,6 @@ export const Input = ({ id, e, info, ...rest }) => {
     </div>
   )
 }
-
 
 export const Select = ({ state, base, ...rest }) => {
   return (

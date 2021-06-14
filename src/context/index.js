@@ -1,5 +1,5 @@
-import React, { useState, useContext, createContext } from 'react';
-// import Ldn from './ldn';
+import { useState, useEffect, createContext } from 'react';
+import Ldn from '../components/ldn';
 
 const api = '/latest';
 
@@ -11,7 +11,7 @@ export const ContextProvider = ({ children }) => {
   let [date, setDate] = useState(null);
   let [ldn, setLdn] = useState(!true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const getData = async () => {
       setLdn(true);
       try {
@@ -20,11 +20,10 @@ export const ContextProvider = ({ children }) => {
         setInfo(data.rates);
         setBase(data.base);
         setDate(data.date);
-        console.log(data);
+        // console.log(data);
         setLdn(!true);
       } catch(e) {
         setLdn(!true);
-        // throw new Error(`Error caused cause of ${e}`);
       }
     }
 
@@ -33,7 +32,7 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <MainContext.Provider value={[info, base, date, ldn]}>
-      {children}
+      {ldn ? <Ldn /> : children}
     </MainContext.Provider>
   )
 }

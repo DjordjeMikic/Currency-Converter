@@ -1,20 +1,56 @@
 .main-container {
-  width: 50%;
+  min-height: 35vh;
+  width: 54%;
 }
+
 .main {
   width: 75%;
 }
+
 .from {
   width: 100%;
   align-items: flex-end !important;
-  justify-content: space-evenly !important;
+  justify-content: space-between !important;
+  padding: 0 16px;
   margin: 2% 0;
 }
 
 .btn {
-  font-size: 1.4rem;
+  height: 75px;
+  width: 75px;
+  font-size: 1.75rem;
   padding: 9px;
   border: none;
   outline: none;
   border-radius: 50%;
+  color: #fafafa;
+  background-color: #3495eb;
+  transition: all 0.4s;
+}
+
+.btn:hover {
+  transform: scale(1.1,1.1);
+}
+
+.btn:active {
+  transform: scale(0.9,0.9);
+}
+
+
+
+.btn p {
+  height: 35%;
+  line-height: 0.68;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .main-container {
+    width: 100%;
+  }
+
+  .from__column {
+    flex-direction: column !important;
+  }
+
 }
