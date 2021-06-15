@@ -2,10 +2,17 @@ import "./style.css";
 
 export const Input = ({ id, e, info, ...rest }) => {
   return (
-    <div className="flex column">
+    <div className="flex column input-container">
       <label htmlFor={id}>{info}</label>
-      <input type="text" className="input" id={id} {...rest} />
-      {e ? <p>{e}</p> : ''}
+
+      <input
+        type="text"
+        className="input"
+        id={id}
+        {...rest}
+      />
+
+      {e ? <p className="e">{e}</p> : ''}
     </div>
   )
 }

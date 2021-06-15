@@ -43,6 +43,10 @@
   line-height: 0.68;
 }
 
+.converted {
+  align-items: flex-end !important;
+}
+
 @media only screen and (max-width: 1024px) {
 
   .main-container {
@@ -50,7 +54,16 @@
   }
 
   .from__column {
+    align-items: flex-start !important;
     flex-direction: column !important;
+  }
+
+  .from__column input {
+    width: 91%;
+  }
+
+  .converted {
+    margin-left: 4%;
   }
 
 }

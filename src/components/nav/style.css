@@ -26,6 +26,7 @@
   right: 75px;
   transform: translateY(-50%);
 }
+
 .switch-selector {
   height: 100%;
   width: 50%;
@@ -33,12 +34,24 @@
   border-radius: 50%;
   background-color: #3495eb;
 }
+
 .switch-left {
   justify-content: flex-start !important;
   background-color: #fafafa;
 }
 
-
 .switch-right {
   justify-content: flex-end !important;
+}
+
+@media only screen and (max-width: 1024px) {
+  .nav {
+    padding: 0 16px;
+  }
+  .nav h1 {
+    font-size: 1.6rem;
+  }
+  .switch {
+    right: 16px;
+  }
 }

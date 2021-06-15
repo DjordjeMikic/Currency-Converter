@@ -6,7 +6,21 @@
   border-bottom: 2px solid lightblue;
   margin-top: 2%;
 }
+
 .input:focus {
   outline: 1px solid lightblue;
   outline-bottom: none;
+}
+
+.e {
+  color: rgb(175, 0, 0);
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .input-container {
+    align-items: flex-start !important;
+    margin: 4% 0;
+  }
+
 }

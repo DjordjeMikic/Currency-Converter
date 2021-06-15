@@ -6,14 +6,16 @@ const api = '/latest';
 export const MainContext = createContext(null);
 
 export const ContextProvider = ({ children }) => {
-  let [info, setInfo] = useState(null);
-  let [base, setBase] = useState(null);
-  let [date, setDate] = useState(null);
-  let [ldn, setLdn] = useState(!true);
+  const [info, setInfo] = useState(null);
+  const [base, setBase] = useState(null);
+  const [date, setDate] = useState(null);
+  const [ldn, setLdn] = useState(!true);
 
   useEffect(() => {
+
     const getData = async () => {
       setLdn(true);
+      
       try {
         let res = await fetch(api);
         let data = await res.json();
@@ -28,6 +30,7 @@ export const ContextProvider = ({ children }) => {
     }
 
     getData();
+
   }, []);
 
   return (

@@ -4,12 +4,12 @@ import { Input, Select } from '../common';
 import "./style.css";
 
 const Main = () => {
-  let [selectedCurrency, setSelectedCurrency] = useState("EUR");
-  let [amount, setAmount] = useState('1');
-  let [convertTo, setConvertTo] = useState("RSD");
-  let [final, setFinal] = useState(0);
-  let [err, setErr] = useState(null);
-  let [info] = useContext(MainContext);
+  const [selectedCurrency, setSelectedCurrency] = useState("EUR");
+  const [amount, setAmount] = useState('1');
+  const [convertTo, setConvertTo] = useState("RSD");
+  const [final, setFinal] = useState(0);
+  const [err, setErr] = useState(null);
+  const [info] = useContext(MainContext);
 
   const changeCurrency = (a) => {
     setSelectedCurrency(a.target.value);
@@ -24,19 +24,26 @@ const Main = () => {
       setErr('Please enter a valid amount');
       setAmount(a.target.value);
       return;
-    } else {
-      if(err) {
-        setErr(null);
-      }
-      setAmount(parseFloat(a.target.value));
     }
+
+    if(err) {
+      setErr(null);
+    }
+    setAmount(parseFloat(a.target.value));
   }
 
-  const converted = useCallback(() => {
-    if(!info || !Object.keys(info).length) return;
-    let sum = (1 / info[selectedCurrency]) / (1 / info[convertTo]);
-    setFinal(sum * amount);
-  }, [selectedCurrency, convertTo, amount, info]);
+  const converted = useCallback(
+    () => {
+      if(!info || !Object.keys(info).length) return;
+      let sum = (1 / info[selectedCurrency]) / (1 / info[convertTo]);
+      setFinal(sum * amount);
+    }, [
+      selectedCurrency,
+      convertTo,
+      amount,
+      info
+    ]
+  );
 
   useEffect(() => {
     converted();
@@ -74,18 +81,22 @@ const Main = () => {
             onChange={convertCurrency}
           />
           {info && Object.keys(info).length && (
-            <div className="flex" style={{ alignItems: 'flex-end' }}>
-              <h1 title={final}>{final.toFixed(2)}</h1>
+            <div className="flex converted">
+              <h1 title={final}>
+                {isNaN(final) ? 'Wrong value' : final.toFixed(2)}
+              </h1>
               <p>{convertTo}</p>
             </div>
           )}
         </div>
 
       </div>
+
       <button className="btn" onClick={changeValues}>
         <p>&larr;</p>
         <p>&rarr;</p>
       </button>
+
     </div>
   )
 }
