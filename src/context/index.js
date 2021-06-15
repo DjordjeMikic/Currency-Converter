@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext } from 'react';
 import Ldn from '../components/ldn';
 
-const api = '/latest';
+const api = 'https://api.exchangerate.host/latest';
 
 export const MainContext = createContext(null);
 
@@ -15,7 +15,7 @@ export const ContextProvider = ({ children }) => {
 
     const getData = async () => {
       setLdn(true);
-      
+
       try {
         let res = await fetch(api);
         let data = await res.json();
