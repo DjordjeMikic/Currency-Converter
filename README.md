@@ -18,4 +18,4 @@ Build production:
 ### `npm run build`
 
 ## See how it look like or use it
-[Currency Converter] (https://djordjemikic.github.io/Currency-Converter/)
+Currency Converter (https://djordjemikic.github.io/Currency-Converter/)
