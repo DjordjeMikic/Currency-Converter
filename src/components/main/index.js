@@ -83,7 +83,8 @@ const Main = () => {
           {info && Object.keys(info).length && (
             <div className="flex converted">
               <h1 title={final}>
-                {isNaN(final) ? 'Wrong value' : final.toFixed(2)}
+                {isNaN(final) ? 'Wrong value' :
+                parseFloat(final.toFixed(2)).toLocaleString()}
               </h1>
               <p>{convertTo}</p>
             </div>
