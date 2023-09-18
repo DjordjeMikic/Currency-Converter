@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
 import { MainContext } from '../../context/ContextProvider';
-import { Input, Select } from '../common';
+import { Input, Select } from '../common/Inputs';
 import "./style.css";
 
 const Main = () => {

@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import Nav from '../nav';
-import Footer from '../footer';
+import Footer from '../footer/Footer';
 import "./style.css";
 
 const Layout = ({ children }) => {
   const [theme, setTheme] = useState(false);
-  // React.useEffect(() => {
-  //   console.log(ldn);
-  // }, [])
 
   return (
     <div
