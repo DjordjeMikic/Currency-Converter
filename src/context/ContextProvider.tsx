@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 
-import Ldn from '../components/ldn';
+import { Loading } from '../components/Loading/Loading';
 import { useExchange } from '../hooks/useExchange';
 
 export const MainContext = createContext<any>(null);
@@ -10,7 +10,7 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <MainContext.Provider value={[info, base, date, ldn]}>
-      {ldn ? <Ldn /> : children}
+      {ldn ? <Loading /> : children}
     </MainContext.Provider>
   )
 }

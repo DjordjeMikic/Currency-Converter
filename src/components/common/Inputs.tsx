@@ -2,11 +2,14 @@ import React from "react";
 import { EText, StyledInput, InputContainer, StyledSelect } from "./Inputs.style";
 import { Flex } from "../../Shared.style";
 
-interface InputProps {
+interface BaseProps {
+  [x: string]: any;
+}
+
+interface InputProps extends BaseProps {
   id: string;
   e?: string;
   info?: string;
-  [x: string]: any;
 }
 
 export const Input: React.FC<InputProps> = ({ id, e, info, ...rest }) => (
@@ -23,10 +26,9 @@ export const Input: React.FC<InputProps> = ({ id, e, info, ...rest }) => (
   </InputContainer>
 );
 
-interface SelectProps {
+interface SelectProps extends BaseProps {
   state: string[];
   base: string;
-  [x: string]: any;
 }
 
 export const Select: React.FC<SelectProps> = ({ state, base, ...rest }) => (

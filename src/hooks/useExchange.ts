@@ -22,7 +22,7 @@ export const useExchange = () => {
           method: 'get',
           url: API
         });
-        console.log(res)
+        
         setInfo(res.data.rates);
         setBase(res.data.base);
         setDate(res.data.date);
