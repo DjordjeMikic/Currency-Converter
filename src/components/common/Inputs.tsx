@@ -1,5 +1,5 @@
 import React from "react";
-import { EText, StyledInput, InputContainer, StyledSelect } from "./Inputs.style";
+import { EText, StyledInput, InputContainer, StyledSelect } from "./Common.style";
 import { Flex } from "../../Shared.style";
 
 interface BaseProps {
@@ -8,7 +8,7 @@ interface BaseProps {
 
 interface InputProps extends BaseProps {
   id: string;
-  e?: string;
+  e?: string | null;
   info?: string;
 }
 

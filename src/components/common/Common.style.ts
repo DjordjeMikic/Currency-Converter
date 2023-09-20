@@ -29,3 +29,29 @@ export const StyledField = `
 
 export const StyledInput = styled.input`${StyledField}`;
 export const StyledSelect = styled.select`${StyledField}`;
+
+export const CircleButtonContainer = styled.button`
+  height: 75px;
+  width: 75px;
+  font-size: 1.75rem;
+  padding: 9px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  color: #fafafa;
+  background-color: #3495eb;
+  transition: all 0.4s;
+
+  &:hover {
+    transform: scale(1.1,1.1);
+  }
+
+  &:active {
+    transform: scale(0.9,0.9);
+  }
+
+  p {
+    height: 35%;
+    line-height: 0.68;
+  }
+`;

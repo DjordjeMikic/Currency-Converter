@@ -1,48 +1,49 @@
-import { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { MainContext } from '../../context/ContextProvider';
 import { Input, Select } from '../common/Inputs';
 import "./style.css";
+import { Converted, InputContainer, MainContainer, MainContent } from './Main.style';
+import { CircleButton } from '../common/CircleButton';
 
-const Main = () => {
+interface MainProps {
+  night: boolean;
+}
+
+const Main: React.FC<MainProps> = ({ night }) => {
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
-  const [amount, setAmount] = useState('1');
+  const [amount, setAmount] = useState(1);
   const [convertTo, setConvertTo] = useState("RSD");
   const [final, setFinal] = useState(0);
-  const [err, setErr] = useState(null);
+  const [err, setErr] = useState<string | null>(null);
   const [info] = useContext(MainContext);
 
-  const changeCurrency = (a) => {
-    setSelectedCurrency(a.target.value);
-  }
+  const changeCurrency = (e) => setSelectedCurrency(e.target.value);
 
-  const convertCurrency = (a) => {
-    setConvertTo(a.target.value);
-  }
+  const convertCurrency = (e) => setConvertTo(e.target.value);
 
   const onChange = (a) => {
-    if(isNaN(parseFloat(a.target.value))) {
+    if (isNaN(parseFloat(a.target.value))) {
       setErr('Please enter a valid amount');
       setAmount(a.target.value);
       return;
     }
 
-    if(err) {
-      setErr(null);
-    }
+    if (err) setErr(null);
+
     setAmount(parseFloat(a.target.value));
   }
 
   const converted = useCallback(
     () => {
-      if(!info || !Object.keys(info).length) return;
-      let sum = (1 / info[selectedCurrency]) / (1 / info[convertTo]);
+      if (!info || !Object.keys(info).length) return;
+      const sum = (1 / info[selectedCurrency]) / (1 / info[convertTo]);
       setFinal(sum * amount);
     }, [
-      selectedCurrency,
-      convertTo,
-      amount,
-      info
-    ]
+    selectedCurrency,
+    convertTo,
+    amount,
+    info
+  ]
   );
 
   useEffect(() => {
@@ -50,16 +51,16 @@ const Main = () => {
   }, [converted, info]);
 
   const changeValues = () => {
-    let middle = selectedCurrency;
+    const middle = selectedCurrency;
     setSelectedCurrency(convertTo);
     setConvertTo(middle);
   }
 
   return (
-    <div className="flex main-container">
+    <MainContainer column={false} night={night}>
 
-      <div className="flex column main">
-        <div className="flex from from__column">
+      <MainContent column>
+        <InputContainer column={false} rowMobile>
           <Select
             state={info && Object.keys(info)}
             base={selectedCurrency}
@@ -72,33 +73,30 @@ const Main = () => {
             onChange={onChange}
             value={amount}
           />
-        </div>
+        </InputContainer>
 
-        <div className="flex from">
+        <InputContainer column={false} rowMobile={false}>
           <Select
             state={info && Object.keys(info)}
             base={convertTo}
             onChange={convertCurrency}
           />
           {info && Object.keys(info).length && (
-            <div className="flex converted">
-              <h1 title={final}>
+            <Converted column={false}>
+              <h1 title={final.toString()}>
                 {isNaN(final) ? 'Wrong value' :
-                parseFloat(final.toFixed(2)).toLocaleString()}
+                  parseFloat(final.toFixed(2)).toLocaleString()}
               </h1>
               <p>{convertTo}</p>
-            </div>
+            </Converted>
           )}
-        </div>
+        </InputContainer>
 
-      </div>
+      </MainContent>
 
-      <button className="btn" onClick={changeValues}>
-        <p>&larr;</p>
-        <p>&rarr;</p>
-      </button>
+      <CircleButton changeValues={changeValues} />
 
-    </div>
+    </MainContainer>
   )
 }
 

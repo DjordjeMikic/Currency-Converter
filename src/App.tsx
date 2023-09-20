@@ -1,20 +1,24 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 
 import { ContextProvider } from './context/ContextProvider';
 import Layout from './components/layout/Layout';
 import { Loading } from './components/Loading/Loading';
 import "./App.css";
 
-const Main = lazy(() => import('./components/main'));
+const Main = lazy(() => import('./components/main/Main'));
 
-const App = () => (
-  <ContextProvider>
-    <Layout>
-      <Suspense fallback={<Loading />}>
-        <Main />
-      </Suspense>
-    </Layout>
-  </ContextProvider>
-)
+const App = () => {
+  const [theme, setTheme] = useState(false);
+
+  return (
+    <ContextProvider>
+      <Layout theme={theme} setTheme={setTheme}>
+        <Suspense fallback={<Loading />}>
+          <Main night={theme} />
+        </Suspense>
+      </Layout>
+    </ContextProvider>
+  )
+}
 
 export default App;
