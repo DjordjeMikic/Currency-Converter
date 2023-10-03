@@ -1,14 +1,14 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Flex } from '../../Shared.style';
 
-export const NavContainer = styled(Flex)<{ night: boolean }>`  
+export const NavContainer = styled(Flex)<{ night: string }>`
   height: 71px;
   width: 100%;
   justify-content: flex-start !important;
   padding: 0 75px;
   color: #fafafa;
-  background-color: ${({ night }) => night ? 'rgb(1,1,1)' : '#3495eb'};
+  background-color: ${({ night }) => (night ? 'rgb(1,1,1)' : '#3495eb')};
   border-bottom: ${({ night }) => night && '1px solid #3495eb'};
   position: absolute;
   top: 0;
@@ -20,18 +20,18 @@ export const NavContainer = styled(Flex)<{ night: boolean }>`
 
   @media (max-width: 1024px) {
     padding: 0 16px;
-    
+
     h1 {
       font-size: 1.6rem;
     }
   }
 `;
 
-export const SwitchContainer = styled(Flex)<{ left: boolean }>`
+export const SwitchContainer = styled(Flex)<{ left: string }>`
   height: 44px;
   width: 88px;
-  justify-content: ${({ left }) => left ? 'flex-start !important' : 'flex-end !important'};
-  background-color: ${({ left }) => left ? '#fafafa' : '#272727'};
+  justify-content: ${({ left }) => (left ? 'flex-start !important' : 'flex-end !important')};
+  background-color: ${({ left }) => (left ? '#fafafa' : '#272727')};
   padding: 4px;
   border-radius: 22px;
   position: absolute;

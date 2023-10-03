@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -14,9 +14,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const Flex = styled.div<{ column: boolean }>`
+export const Flex = styled.div<{ column: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: ${({ column }) => column ? 'column' : 'row'};
+  flex-direction: ${({ column }) => (column ? 'column' : 'row')};
 `;

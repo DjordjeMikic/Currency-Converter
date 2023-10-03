@@ -5,7 +5,7 @@ import { Flex } from '../../Shared.style';
 export const LoadingContainer = styled(Flex)`
   height: 100vh;
   width: 100%;
-  background-color: rgba(0,0,0.6);
+  background-color: rgba(0, 0, 0.6);
   color: #3495eb;
   position: absolute;
   top: 0;

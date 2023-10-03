@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 import { Nav } from '../nav/Nav';
 import Footer from '../footer/Footer';
@@ -10,7 +10,7 @@ interface LayoutProps extends PropsWithChildren {
 }
 
 const Layout: React.FC<LayoutProps> = ({ theme, setTheme, children }) => (
-  <LayoutContainer column night={theme}>
+  <LayoutContainer column="true" night={theme ? "true" : ""}>
     <Nav theme={theme} setTheme={setTheme} />
     {children}
     <Footer />

@@ -6,11 +6,13 @@ export const MainContainer = styled(Flex)<{ night: boolean }>`
   min-height: 35vh;
   width: 54%;
 
-  ${({ night }) => night && css`
-    border: 2px solid #3495eb;
-    border-left: none;
-    border-right: none;
-  `}
+  ${({ night }) =>
+    night &&
+    css`
+      border: 2px solid #3495eb;
+      border-left: none;
+      border-right: none;
+    `}
 
   @media(max-width: 1024px) {
     width: 100%;
@@ -41,7 +43,7 @@ export const InputContainer = styled(Flex)<{ rowMobile: boolean }>`
 export const Converted = styled(Flex)`
   align-items: flex-end !important;
 
-  @media (max-width) {
+  @media (max-width: 1024px) {
     margin-left: 4%;
   }
 `;

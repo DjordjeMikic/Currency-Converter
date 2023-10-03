@@ -8,12 +8,12 @@ interface NavProps {
 }
 
 export const Nav: React.FC<NavProps> = ({ theme, setTheme }) => (
-  <NavContainer column={false} night={theme}>
+  <NavContainer column="" night={theme ? "true" : ""}>
     <h1>Currency Converter</h1>
 
     <SwitchContainer
-      column={false}
-      left={!theme}
+      column=""
+      left={!theme ? "true" : ""}
       onClick={() => setTheme(prevState => !prevState)}
     >
       <SwitchSelector />

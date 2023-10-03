@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Flex } from '../../Shared.style';
 
 export const InputContainer = styled(Flex)`
-  @media(max-width: 1024px) {
+  @media (max-width: 1024px) {
     align-items: flex-start !important;
     margin: 4% 0;
   }
@@ -27,8 +27,12 @@ export const StyledField = `
   }
 `;
 
-export const StyledInput = styled.input`${StyledField}`;
-export const StyledSelect = styled.select`${StyledField}`;
+export const StyledInput = styled.input`
+  ${StyledField}
+`;
+export const StyledSelect = styled.select`
+  ${StyledField}
+`;
 
 export const CircleButtonContainer = styled.button`
   height: 75px;
@@ -43,11 +47,11 @@ export const CircleButtonContainer = styled.button`
   transition: all 0.4s;
 
   &:hover {
-    transform: scale(1.1,1.1);
+    transform: scale(1.1, 1.1);
   }
 
   &:active {
-    transform: scale(0.9,0.9);
+    transform: scale(0.9, 0.9);
   }
 
   p {

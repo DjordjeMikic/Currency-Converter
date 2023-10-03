@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
+
 import { MainContext } from '../../context/ContextProvider';
 import { Input, Select } from '../common/Inputs';
-import "./style.css";
 import { Converted, InputContainer, MainContainer, MainContent } from './Main.style';
 import { CircleButton } from '../common/CircleButton';
 
@@ -57,10 +57,10 @@ const Main: React.FC<MainProps> = ({ night }) => {
   }
 
   return (
-    <MainContainer column={false} night={night}>
+    <MainContainer column="" night={night}>
 
-      <MainContent column>
-        <InputContainer column={false} rowMobile>
+      <MainContent column="true">
+        <InputContainer column="" rowMobile>
           <Select
             state={info && Object.keys(info)}
             base={selectedCurrency}
@@ -75,14 +75,14 @@ const Main: React.FC<MainProps> = ({ night }) => {
           />
         </InputContainer>
 
-        <InputContainer column={false} rowMobile={false}>
+        <InputContainer column="" rowMobile={false}>
           <Select
             state={info && Object.keys(info)}
             base={convertTo}
             onChange={convertCurrency}
           />
           {info && Object.keys(info).length && (
-            <Converted column={false}>
+            <Converted column="">
               <h1 title={final.toString()}>
                 {isNaN(final) ? 'Wrong value' :
                   parseFloat(final.toFixed(2)).toLocaleString()}

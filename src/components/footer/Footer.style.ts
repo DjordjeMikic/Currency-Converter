@@ -25,4 +25,4 @@ export const FooterContainer = styled(Flex)`
       transform: scale(1.1, 1.1);
     }
   }
-`
+`;

@@ -3,7 +3,7 @@ import React from "react";
 import { FooterContainer } from "./Footer.style";
 
 const Footer = () => (
-  <FooterContainer column={false}>
+  <FooterContainer column="">
 
     <p>&copy; Copyright by{" "}
       <a

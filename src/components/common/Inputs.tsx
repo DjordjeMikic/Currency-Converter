@@ -13,7 +13,7 @@ interface InputProps extends BaseProps {
 }
 
 export const Input: React.FC<InputProps> = ({ id, e, info, ...rest }) => (
-  <InputContainer column>
+  <InputContainer column="true">
     <label htmlFor={id}>{info}</label>
 
     <StyledInput
@@ -32,7 +32,7 @@ interface SelectProps extends BaseProps {
 }
 
 export const Select: React.FC<SelectProps> = ({ state, base, ...rest }) => (
-  <Flex column>
+  <Flex column="true">
     <StyledSelect value={base} {...rest}>
       {state?.length > 0 && state.map((a, b) => (
         <option value={a} key={b}>{a}</option>

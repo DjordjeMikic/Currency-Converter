@@ -20,14 +20,14 @@ export const useExchange = () => {
       try {
         const res = await axios({
           method: 'get',
-          url: API
+          url: API,
         });
-        
+
         setInfo(res.data.rates);
         setBase(res.data.base);
         setDate(res.data.date);
         setLdn(false);
-      } catch(e) {
+      } catch (e) {
         setLdn(false);
       }
     })();
@@ -39,4 +39,4 @@ export const useExchange = () => {
     base,
     date,
   };
-}
+};
