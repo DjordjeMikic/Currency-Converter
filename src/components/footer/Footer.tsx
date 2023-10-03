@@ -1,7 +1,9 @@
-import "./style.css";
+import React from "react";
+
+import { FooterContainer } from "./Footer.style";
 
 const Footer = () => (
-  <div className="flex footer">
+  <FooterContainer column="">
 
     <p>&copy; Copyright by{" "}
       <a
@@ -11,7 +13,7 @@ const Footer = () => (
       >Djordje Mikic</a>
     </p>
 
-  </div>
+  </FooterContainer>
 );
 
 export default Footer;
