@@ -57,10 +57,10 @@ const Main: React.FC<MainProps> = ({ night }) => {
   }
 
   return (
-    <MainContainer column="" night={night}>
+    <MainContainer column="" night={night ? "true" : ""}>
 
       <MainContent column="true">
-        <InputContainer column="" rowMobile>
+        <InputContainer column="" rowmobile="true">
           <Select
             state={info && Object.keys(info)}
             base={selectedCurrency}
@@ -75,7 +75,7 @@ const Main: React.FC<MainProps> = ({ night }) => {
           />
         </InputContainer>
 
-        <InputContainer column="" rowMobile={false}>
+        <InputContainer column="" rowmobile="">
           <Select
             state={info && Object.keys(info)}
             base={convertTo}

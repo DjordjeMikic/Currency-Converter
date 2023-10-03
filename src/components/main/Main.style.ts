@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { Flex } from '../../Shared.style';
 
-export const MainContainer = styled(Flex)<{ night: boolean }>`
+export const MainContainer = styled(Flex)<{ night: string }>`
   min-height: 35vh;
   width: 54%;
 
@@ -23,7 +23,7 @@ export const MainContent = styled(Flex)`
   width: 75%;
 `;
 
-export const InputContainer = styled(Flex)<{ rowMobile: boolean }>`
+export const InputContainer = styled(Flex)<{ rowmobile: string }>`
   width: 100%;
   align-items: flex-end !important;
   justify-content: space-between !important;
@@ -31,8 +31,8 @@ export const InputContainer = styled(Flex)<{ rowMobile: boolean }>`
   margin: 2% 0;
 
   @media (max-width: 1024px) {
-    align-items: ${({ rowMobile }) => rowMobile && 'flex-start !important'};
-    flex-direction: ${({ rowMobile }) => rowMobile && 'column !important'};
+    align-items: ${({ rowmobile }) => rowmobile && 'flex-start !important'};
+    flex-direction: ${({ rowmobile }) => rowmobile && 'column !important'};
 
     input {
       width: 91%;
